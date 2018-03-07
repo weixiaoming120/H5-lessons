@@ -5,18 +5,34 @@
     <meta charset="UTF-8">
     <title>Canvas 执行上下文（context） </title>
     <script type="text/javascript">
+        //事件监听
         window.addEventListener('load', eventWindowLoaded, false);
         function eventWindowLoaded() {
+            canvasApp();
+        }
+        window.onload = function (){
             canvasApp();
         }
         function canvasApp() {
             var theCanvas = document.getElementById('canvas');
             var context = theCanvas.getContext('2d');
+            
+            context.fillStyle='black';
+            context.fillRect(0,0,100,100);
+            context.clearRect(25, 25, 48, 48);
+       
+            context.lineWidth = 10;          //线宽
+            context.strokeStyle = "#ff0000";   //颜色
+            // context.beginPath();//思考：若没有这句话会怎样？  开始路径
+            context.moveTo(100,100);   //移动到的位置
+            context.lineTo(200, 200);   
+
         }
 </script>
 </head>
 
 <body>
+    <!-- 这里的长宽是整体画布的大小 -->
     <canvas id="canvas" width="500" height="500" style="border:2px #ccc solid">
             Your browser does not support the HTML 5 Canvas.
     </canvas>
